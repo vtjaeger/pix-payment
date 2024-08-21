@@ -1,6 +1,7 @@
 package com.vtjaeger.payment.services;
 
 import com.vtjaeger.payment.dtos.UserRequest;
+import com.vtjaeger.payment.dtos.UserResponse;
 import com.vtjaeger.payment.models.User;
 import com.vtjaeger.payment.repositories.UserRepository;
 import com.vtjaeger.payment.util.RandomString;
@@ -18,7 +19,7 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User saveUser(User user) {
+    public UserResponse saveUser(User user) {
         if(userRepository.findByEmail(user.getEmail()) != null) {
             throw new RuntimeException("email already exists");
         } else {
@@ -30,7 +31,12 @@ public class UserService {
             user.setEnabled(false);
 
             User savedUser = userRepository.save(user);
-            return savedUser;
+
+            return new UserResponse(
+                    savedUser.getId(),
+                    savedUser.getName(),
+                    savedUser.getEmail(),
+                    savedUser.getPassword());
         }
     }
 
