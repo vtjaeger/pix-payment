@@ -7,7 +7,6 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.vtjaeger.payment.models.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.HttpRequestMethodNotSupportedException;
 
 import java.time.Instant;
 import java.time.LocalDateTime;

@@ -1,13 +1,11 @@
 package com.vtjaeger.payment.services;
 
-import com.vtjaeger.payment.dtos.UserRequest;
 import com.vtjaeger.payment.dtos.UserResponse;
 import com.vtjaeger.payment.models.User;
 import com.vtjaeger.payment.repositories.UserRepository;
 import com.vtjaeger.payment.util.RandomString;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

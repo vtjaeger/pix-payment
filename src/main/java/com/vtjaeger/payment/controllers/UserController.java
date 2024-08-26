@@ -1,19 +1,14 @@
 package com.vtjaeger.payment.controllers;
 
-import com.vtjaeger.payment.dtos.LoginRequest;
-import com.vtjaeger.payment.dtos.LoginResponse;
 import com.vtjaeger.payment.dtos.UserRequest;
 import com.vtjaeger.payment.dtos.UserResponse;
 import com.vtjaeger.payment.models.User;
-import com.vtjaeger.payment.services.TokenService;
 import com.vtjaeger.payment.services.UserService;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;

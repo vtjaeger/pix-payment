@@ -4,7 +4,6 @@ import com.vtjaeger.payment.dtos.LoginRequest;
 import com.vtjaeger.payment.dtos.LoginResponse;
 import com.vtjaeger.payment.models.User;
 import com.vtjaeger.payment.services.TokenService;
-import com.vtjaeger.payment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

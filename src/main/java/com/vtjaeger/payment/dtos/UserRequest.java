@@ -3,7 +3,6 @@ package com.vtjaeger.payment.dtos;
 import com.vtjaeger.payment.models.User;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public record UserRequest(
