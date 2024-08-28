@@ -22,34 +22,34 @@ public class UserService {
     private MailService mailService;
 
     public UserResponse saveUser(User user) throws MessagingException, UnsupportedEncodingException {
-        if(userRepository.findByEmail(user.getEmail()) != null) {
+        if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new RuntimeException("email already exists");
-        } else {
-            String encodedPassword = passwordEncoder.encode(user.getPassword());
-            user.setPassword(encodedPassword);
-
-            String randomCode = RandomString.generateRandomString(64);
-            user.setVerificationCode(randomCode);
-            user.setEnabled(false);
-
-            User savedUser = userRepository.save(user);
-            mailService.sendVerificationEmail(user);
-
-            return new UserResponse(
-                    savedUser.getId(),
-                    savedUser.getName(),
-                    savedUser.getEmail(),
-                    savedUser.getPassword());
         }
+
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+        String randomCode = RandomString.generateRandomString(64);
+        user.setVerificationCode(randomCode);
+        user.setEnabled(false);
+
+        User savedUser = userRepository.save(user);
+        mailService.sendVerificationEmail(user);
+
+        return new UserResponse(
+                savedUser.getId(),
+                savedUser.getName(),
+                savedUser.getEmail(),
+                savedUser.getPassword());
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return userRepository.findAll();
     }
 
-    public boolean verify(String verificationCode){
+    public boolean verify(String verificationCode) {
         User user = userRepository.findByVerificationCode(verificationCode);
-        if(user == null || user.isEnabled()){
+        if (user == null || user.isEnabled()) {
             return false;
         } else {
             user.setVerificationCode(null);
